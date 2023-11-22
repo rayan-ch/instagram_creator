@@ -4,13 +4,12 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import random
-from selenium.webdriver.chrome.service import Service
 import sys
-from fake_useragent import UserAgent
 import time
 import getMailCode
 import getInfo
-
+import os
+os.environ['PYDEVD_DISABLE_FILE_VALIDATION'] = '1'
 
 def find_element_by_text(driver, tag_name, text):
     xpath_expression = f"//{tag_name}[contains(text(), '{text}')]"
@@ -52,7 +51,7 @@ def load_page():
     options = Options()
     # options.add_argument('--user-data-dir=C:/Users/samada/AppData/Local/Google/Chrome/User Data')
     # options.add_argument('--profile-directory=Default')
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome()
     driver.get("https://www.instagram.com/accounts/emailsignup/")
     WebDriverWait(driver,10000).until(EC.visibility_of_element_located((By.CLASS_NAME,'_a9--')))
     accept_cookies = driver.find_element(By.CLASS_NAME, "_a9--")

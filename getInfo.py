@@ -40,4 +40,3 @@ def generate_user():
         exit()
 
 
-generate_user()
